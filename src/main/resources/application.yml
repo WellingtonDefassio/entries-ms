@@ -1,1 +1,24 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5434/entries
+    username: root
+    password: secret
+  jpa:
+    hibernate:
+      ddl-auto: update
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    password: ${RABBIT_PASS:guest}
+    username: ${RABBIT_USER:guest}
+    port: ${RABBIT_PORT:5672}
+  rabbit:
+    queue:
+      entries: ${SEND_PROVISION_QUEUE:entries}
+      status: ${STATUS_QUEUE:status}
 
+server:
+  port: 8083
+
+clients:
+  client-ms: ${CLIENT_MS:localhost:8080}
